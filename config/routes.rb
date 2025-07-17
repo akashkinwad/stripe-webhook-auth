@@ -6,4 +6,8 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy"
 
   resources :subscriptions, only: [ :index ]
+
+  namespace :webhooks do
+    post "stripe", to: "stripe#create", defaults: { format: :json }
+  end
 end
