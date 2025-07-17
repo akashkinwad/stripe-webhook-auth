@@ -3,6 +3,8 @@ require "digest"
 class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
 
+  has_many :subscriptions
+
   def self.authenticate(email, password)
     user = find_by(email: email)
     return nil unless user
