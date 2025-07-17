@@ -1,0 +1,18 @@
+<h1>Your Subscriptions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Stripe ID</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @subscriptions.each do |sub| %>
+      <tr>
+        <td><%= sub.stripe_subscription_id %></td>
+        <td><%= sub.status %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
