@@ -1,0 +1,18 @@
+{
+  "id": "evt_1SubDeletedTest123",
+  "object": "event",
+  "type": "customer.subscription.deleted",
+  "data": {
+    "object": {
+      "id": "sub_1TestSub123",
+      "object": "subscription",
+      "customer": "cus_TestCustomer123",
+      "status": "canceled",
+      "canceled_at": 1723912967,
+      "metadata": {
+        "email": "test@example.com"
+      }
+    }
+  },
+  "livemode": false
+}

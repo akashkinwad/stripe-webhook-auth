@@ -1,0 +1,56 @@
+{
+  "id": "evt_1SubCreatedTest123",
+  "object": "event",
+  "api_version": "2024-08-01",
+  "created": 1721234567,
+  "data": {
+    "object": {
+      "id": "sub_1TestSub123",
+      "object": "subscription",
+      "application_fee_percent": null,
+      "billing_cycle_anchor": 1721234567,
+      "cancel_at_period_end": false,
+      "canceled_at": null,
+      "collection_method": "charge_automatically",
+      "created": 1721234567,
+      "current_period_end": 1723912967,
+      "current_period_start": 1721234567,
+      "customer": "cus_TestCustomer123",
+      "days_until_due": null,
+      "default_payment_method": "pm_test123",
+      "metadata": {
+        "email": "test@example.com"
+      },
+      "status": "active",
+      "items": {
+        "object": "list",
+        "data": [
+          {
+            "id": "si_testItem123",
+            "object": "subscription_item",
+            "price": {
+              "id": "price_test123",
+              "object": "price",
+              "unit_amount": 2000,
+              "currency": "usd",
+              "recurring": {
+                "interval": "month",
+                "interval_count": 1
+              },
+              "product": "prod_test123"
+            },
+            "quantity": 1
+          }
+        ]
+      },
+      "start_date": 1721234567
+    }
+  },
+  "livemode": false,
+  "pending_webhooks": 1,
+  "request": {
+    "id": "req_test123",
+    "idempotency_key": null
+  },
+  "type": "customer.subscription.created"
+}

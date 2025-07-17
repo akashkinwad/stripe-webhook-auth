@@ -1,0 +1,20 @@
+{
+  "id": "evt_1InvoicePaySucceededTest123",
+  "object": "event",
+  "type": "invoice.payment_succeeded",
+  "data": {
+    "object": {
+      "id": "in_testInvoice123",
+      "object": "invoice",
+      "amount_paid": 2000,
+      "currency": "usd",
+      "customer": "cus_TestCustomer123",
+      "subscription": "sub_1TestSub123",
+      "status": "paid",
+      "metadata": {
+        "email": "test@example.com"
+      }
+    }
+  },
+  "livemode": false
+}

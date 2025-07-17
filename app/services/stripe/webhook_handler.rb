@@ -10,7 +10,6 @@ module Stripe
     def process!
       case @type
       when "customer.subscription.created"
-        binding.pry
         handle_subscription_created
       when "invoice.payment_succeeded"
         handle_payment_succeeded
