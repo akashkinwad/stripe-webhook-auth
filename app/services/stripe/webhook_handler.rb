@@ -41,7 +41,7 @@ module Stripe
       subscription = ::Subscription.find_by(stripe_subscription_id: stripe_id)
       return unless subscription
 
-      subscription.update!(status: "paid")
+      subscription.paid!
     end
 
     def handle_subscription_deleted
@@ -49,7 +49,7 @@ module Stripe
       subscription = ::Subscription.find_by(stripe_subscription_id: stripe_id)
       return unless subscription
 
-      subscription.update!(status: "canceled")
+      subscription.canceled!
     end
   end
 end
