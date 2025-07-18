@@ -2,20 +2,16 @@ require "test_helper"
 
 class SubscriptionsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @user = User.new(email: "test@example.com")
-    @user.set_password("password")
-    @user.save!
+    @user = create(:user, email: "test@example.com", password: "password")
 
-    @subscription1 = Subscription.create!(
+    @subscription1 = create(:subscription, :paid,
       user: @user,
-      stripe_subscription_id: "sub_001",
-      status: :paid
+      stripe_subscription_id: "sub_001"
     )
 
-    @subscription2 = Subscription.create!(
+    @subscription2 = create(:subscription, :unpaid,
       user: @user,
-      stripe_subscription_id: "sub_002",
-      status: :unpaid
+      stripe_subscription_id: "sub_002"
     )
   end
 

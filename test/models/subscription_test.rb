@@ -1,12 +1,9 @@
 require "test_helper"
 
 class SubscriptionTest < ActiveSupport::TestCase
-  def setup
-    @user = User.create!(email: "test@example.com").tap do |u|
-      u.set_password("password")
-      u.save!
-    end
-    @subscription = Subscription.new(user: @user, stripe_subscription_id: "sub_123", status: "unpaid")
+  setup do
+    @user = create(:user)
+    @subscription = build(:subscription, user: @user, stripe_subscription_id: "sub_123", status: "unpaid")
   end
 
   test "should be valid with valid attributes" do
@@ -20,7 +17,7 @@ class SubscriptionTest < ActiveSupport::TestCase
   end
 
   test "should have default status as unpaid" do
-    subscription = Subscription.new(user: @user)
+    subscription = build(:subscription, user: @user)
     assert_equal "unpaid", subscription.status
   end
 

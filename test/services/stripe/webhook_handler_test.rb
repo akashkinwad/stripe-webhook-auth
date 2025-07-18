@@ -1,11 +1,8 @@
 require "test_helper"
 
 class Stripe::WebhookHandlerTest < ActiveSupport::TestCase
-  def setup
-    @user = User.create!(email: "test@example.com").tap do |u|
-      u.set_password("secret")
-      u.save!
-    end
+  setup do
+    @user = create(:user, email: "test@example.com", password: "secret")
   end
 
   test "handles customer.subscription.created event" do
@@ -30,10 +27,9 @@ class Stripe::WebhookHandlerTest < ActiveSupport::TestCase
   end
 
   test "does not create duplicate subscriptions on repeated created event" do
-    Subscription.create!(
+    create(:subscription, :unpaid,
       user: @user,
-      stripe_subscription_id: "sub_123",
-      status: "unpaid"
+      stripe_subscription_id: "sub_123"
     )
 
     event = {
@@ -52,10 +48,9 @@ class Stripe::WebhookHandlerTest < ActiveSupport::TestCase
   end
 
   test "handles invoice.payment_succeeded event" do
-    subscription = Subscription.create!(
+    subscription = create(:subscription, :unpaid,
       user: @user,
-      stripe_subscription_id: "sub_123",
-      status: "unpaid"
+      stripe_subscription_id: "sub_123"
     )
 
     event = {
@@ -72,10 +67,9 @@ class Stripe::WebhookHandlerTest < ActiveSupport::TestCase
   end
 
   test "handles customer.subscription.deleted event" do
-    subscription = Subscription.create!(
+    subscription = create(:subscription, :paid,
       user: @user,
-      stripe_subscription_id: "sub_123",
-      status: "paid"
+      stripe_subscription_id: "sub_123"
     )
 
     event = {
