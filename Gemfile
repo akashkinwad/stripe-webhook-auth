@@ -49,6 +49,7 @@ group :development, :test do
   gem "dotenv-rails"
   gem "pry"
   gem "pry-rails"
+  gem "minitest-reporters"
 end
 
 group :development do

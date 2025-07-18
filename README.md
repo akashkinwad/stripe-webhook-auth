@@ -126,3 +126,48 @@ These contain mock Stripe event payloads used for testing. Example for `subscrip
   }
 }
 ```
+
+### Minitest Result
+
+```
+➜  stripe-webhook-auth git:(main) ✗ rails test
+
+Running 23 tests in a single process (parallelization threshold is 50)
+Started with run options --seed 12458
+
+SubscriptionTest
+  ✓ should have default status as unpaid
+  ✓ should allow valid statuses
+  ✓ should be valid with valid attributes
+  ✓ should require a user
+  ✓ should not allow invalid status
+
+Stripe::WebhookHandlerTest
+  ✓ handles customer.subscription.deleted event
+  ✓ does not create duplicate subscriptions on repeated created event
+  ✓ handles customer.subscription.created event
+  ✓ logs and ignores unknown event types
+  ✓ handles invoice.payment_succeeded event
+
+SubscriptionsControllerTest
+  ✓ should redirect index when not logged in
+  ✓ should get index when logged in
+
+SessionsControllerTest
+  ✓ should not login with invalid credentials
+  ✓ should get new (login form)
+  ✓ should login user with valid credentials
+  ✓ should logout user
+
+UserTest
+  ✓ should be valid with email and password_digest
+  ✓ should enforce unique email
+  ✓ authenticate should return nil for unknown email
+  ✓ authenticate should return user for correct credentials
+  ✓ authenticate should return nil for wrong password
+  ✓ set_password should hash the password correctly
+  ✓ should require email
+
+Finished in 0.24555s
+✔ 23 tests, 50 assertions, 0 failures, 0 errors, 0 skips
+```

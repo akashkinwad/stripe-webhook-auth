@@ -6,10 +6,11 @@ class SessionsController < ApplicationController
     user = User.authenticate(session_params[:email], session_params[:password])
     if user
       session[:user_id] = user.id
+      flash[:notice] = "Logged in successfully"
       redirect_to subscriptions_path
     else
       flash[:alert] = "Invalid email or password"
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
