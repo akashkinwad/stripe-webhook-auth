@@ -127,7 +127,8 @@ These contain mock Stripe event payloads used for testing. Example for `subscrip
 }
 ```
 
-### Minitest Result
+## Minitest Result
+
 
 ```
 ➜  stripe-webhook-auth git:(main) ✗ rails test
