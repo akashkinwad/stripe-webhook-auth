@@ -66,7 +66,7 @@ curl -X POST http://localhost:3000/webhooks/stripe \
 curl -X POST http://localhost:3000/webhooks/stripe \
   -H "Content-Type: application/json" \
   -H "Stripe-Signature: t=123,v1=fake_signature" \
-  -d @payment_succeeded.json
+  -d @invoice_payment_succeeded.json
 ```
 
 ### 3. Subscription Deleted
@@ -83,7 +83,7 @@ curl -X POST http://localhost:3000/webhooks/stripe \
 Ensure you have the following files in your project root (or adjust the paths in the curl command accordingly):
 
 - `subscription_created.json`
-- `payment_succeeded.json`
+- `invoice_payment_succeeded.json`
 - `subscription_deleted.json`
 
 These contain mock Stripe event payloads used for testing. Example for `subscription_created.json`:
