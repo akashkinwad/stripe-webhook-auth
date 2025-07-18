@@ -50,6 +50,7 @@ group :development, :test do
   gem "pry"
   gem "pry-rails"
   gem "minitest-reporters"
+  gem "factory_bot_rails"
 end
 
 group :development do

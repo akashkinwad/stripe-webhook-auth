@@ -5,6 +5,7 @@ require "minitest/reporters"
 Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 module ActiveSupport
   class TestCase
+    include FactoryBot::Syntax::Methods
     # Run tests in parallel with specified workers
     parallelize(workers: :number_of_processors)
 
